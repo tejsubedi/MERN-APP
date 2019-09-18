@@ -2,6 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+//import router file
+const exercisesRouter = require("./routes/exercises");
+const usersRouter = require("./routes/users");
+
 require('dotenv').config();
 
 const app = express();
@@ -22,9 +26,13 @@ app.use(cors());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
+//Use routes
 app.get('/', (req, res) => {
     res.send(`Hello Backend`);
-})
+});
+
+app.use('/exercises', exercisesRouter);
+app.use('/users', usersRouter);
 
 
 app.listen(PORT, ()=> {
