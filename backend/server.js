@@ -27,9 +27,6 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 //Use routes
-app.get('/', (req, res) => {
-    res.send(`Hello Backend`);
-});
 
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
