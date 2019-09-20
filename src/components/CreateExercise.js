@@ -52,16 +52,17 @@ export default class CreateExercise extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+
         const exercise = {
             username: this.state.username,
             description: this.state.description,
             duration: this.state.duration,
             date: this.state.date
         }
-
         console.log(exercise);
 
-        window.location = '/';
+       
+        
     };
 
 
@@ -72,15 +73,19 @@ export default class CreateExercise extends Component {
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Username: </label>
-                        <select ref="userInput" required className="form-control" value={this.state.username} onChange={this.onChangeUsername}>
+                        <select ref="userInput" 
+                            required 
+                            className="form-control" 
+                            value={this.state.username} 
+                            onChange={this.onChangeUsername}>
                             {
                                 this.state.users.map((user) => {
-                                    return(
-                                     <option>
-                                        key={user}
-                                        value = {user}>{user}
-                                    </option>
-                                    )
+                                    return <option
+                                     key={user} 
+                                     value={user}>
+                                         {user}
+                                    </option>;
+                                    
                                 })
                             }
                         </select>
