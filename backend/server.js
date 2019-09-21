@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 
 //import router file
 const exercisesRouter = require("./routes/exercises");
@@ -18,13 +19,14 @@ mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true});
 const connection = mongoose.connection;
 connection.once('open', () => {
     console.log(`Mongo db succeessfully connected`);
-})
+});
 
 
 //middleware
 app.use(cors());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(morgan('dev'));
 
 //Use routes
 
