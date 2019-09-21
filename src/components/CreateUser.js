@@ -4,6 +4,7 @@ import axios from 'axios';
 export default class CreateUser extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             username: '',
         }
@@ -20,12 +21,10 @@ export default class CreateUser extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-
         const user = {
             username: this.state.username,
-            
         }
-        console.log(user);
+        //console.log(user);
 
         axios.post('http://localhost:5000/users/add', user) 
             .then(res => console.log(res.data));
@@ -34,7 +33,6 @@ export default class CreateUser extends Component {
         this.setState({
             username:'',
         })
-
 
     };
 
